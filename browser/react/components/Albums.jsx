@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 
 export default ({ albums, selectAlbum }) => (
   <div className="albums">
@@ -6,7 +7,7 @@ export default ({ albums, selectAlbum }) => (
     <div className="row">
       {albums.map(album => (
         <div key={album.id} className="col-xs-4">
-          <a className="thumbnail" href="#" onClick={() => selectAlbum(album.id)}>
+          <Link className="thumbnail" to={`/albums/${album.id}`}>
             <img src={album.imageUrl} />
             <div className="caption">
               <h5>
@@ -14,9 +15,10 @@ export default ({ albums, selectAlbum }) => (
               </h5>
               <small>{album.songs.length} songs</small>
             </div>
-          </a>
+          </Link>
         </div>
       ))}
     </div>
   </div>
 );
+
